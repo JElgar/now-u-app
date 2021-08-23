@@ -6,7 +6,7 @@ import 'package:app/services/dialog_service.dart';
 import 'package:app/services/campaign_service.dart';
 
 import 'package:url_launcher/url_launcher.dart';
-import 'package:app/assets/components/darkButton.dart';
+import 'package:app/assets/components/buttons/darkButton.dart';
 import 'package:app/models/Learning.dart';
 import 'package:app/models/Action.dart';
 
