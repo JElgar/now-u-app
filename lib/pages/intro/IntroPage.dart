@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:rect_getter/rect_getter.dart';
 
-import 'package:app/assets/components/darkButton.dart';
+import 'package:app/assets/components/buttons/darkButton.dart';
 import 'package:app/assets/components/textButton.dart';
 
 List<Widget> pages = <Widget>[

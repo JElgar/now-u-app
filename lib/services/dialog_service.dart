@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:app/assets/components/darkButton.dart';
+import 'package:app/assets/components/buttons/darkButton.dart';
 
 class AlertRequest {
   final String title;

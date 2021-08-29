@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:app/assets/components/darkButton.dart';
+import 'package:app/assets/components/buttons/darkButton.dart';
 import 'package:app/assets/StyleFrom.dart';
 import 'package:app/routes.dart';
 

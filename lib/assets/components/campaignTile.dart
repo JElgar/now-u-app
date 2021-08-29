@@ -5,7 +5,7 @@ import 'package:app/models/Campaign.dart';
 import 'package:app/assets/components/joinedIndicator.dart';
 import 'package:app/assets/components/customTile.dart';
 import 'package:app/assets/components/textButton.dart';
-import 'package:app/assets/components/darkButton.dart';
+import 'package:app/assets/components/buttons/darkButton.dart';
 import 'package:app/assets/components/custom_network_image.dart';
 import 'package:app/assets/StyleFrom.dart';
 import 'package:app/routes.dart';
