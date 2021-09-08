@@ -1,6 +1,6 @@
 import 'package:app/assets/StyleFrom.dart';
 import 'package:flutter/gestures.dart';
-import 'package:app/assets/components/darkButton.dart';
+import 'package:app/assets/components/buttons/darkButton.dart';
 import 'package:app/assets/components/inputs.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';

@@ -1,11 +1,13 @@
+import 'package:app/assets/components/buttons/customWidthButton.dart';
 import 'package:flutter/material.dart';
 
 import 'package:app/locator.dart';
 import 'package:app/services/dialog_service.dart';
 import 'package:app/services/navigation_service.dart';
 
-import 'package:app/assets/components/darkButton.dart';
+import 'package:app/assets/components/buttons/darkButton.dart';
 import 'package:app/assets/StyleFrom.dart';
+
 
 class DialogManager extends StatefulWidget {
   final Widget child;
@@ -36,42 +38,40 @@ class _DialogManagerState extends State<DialogManager> {
       barrierDismissible: true,
       builder: (_) => AlertDialog(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(35),
+          borderRadius: BorderRadius.circular(10),
         ),
-        content: Padding(
-            padding: EdgeInsets.all(25),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                SizedBox(height: 20),
-                Text(
-                  request.title,
-                  textAlign: TextAlign.center,
-                  style: textStyleFrom(
-                    Theme.of(context).primaryTextTheme.headline2,
-                  ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Image.network(request.headerImage ?? 'https://i.ytimg.com/vi/h5vnFpWCOhQ/maxresdefault.jpg'),
+            SizedBox(height: 20),
+            Text(
+              request.title,
+              textAlign: TextAlign.center,
+              style: textStyleFrom(
+                Theme.of(context).primaryTextTheme.headline2,
+              ),
+            ),
+            SizedBox(height: 20),
+            Padding(
+              padding: EdgeInsets.all(5),
+              child: Text(
+                request.description,
+                style: textStyleFrom(
+                  Theme.of(context).primaryTextTheme.bodyText1,
+                  color: Theme.of(context).primaryColorDark,
                 ),
-                SizedBox(height: 20),
-                Padding(
-                  padding: EdgeInsets.all(5),
-                  child: Text(
-                    request.description,
-                    style: textStyleFrom(
-                      Theme.of(context).primaryTextTheme.bodyText1,
-                      color: Theme.of(context).primaryColorDark,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                SizedBox(height: 40),
-                SizedBox(height: 20),
-                Column(
-                  children: _getButtons(request.buttons),
-                ),
-                SizedBox(height: 20),
-              ],
-            )),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            SizedBox(height: 20),
+            Column(
+              children: _getButtons(request.buttons),
+            ),
+            SizedBox(height: 20),
+          ],
+        ),
       ),
     );
   }
@@ -82,7 +82,7 @@ class _DialogManagerState extends State<DialogManager> {
         Container(
           width: double.infinity,
           child: DarkButton(
-            "Ok",
+            'Select Cause',
             onPressed: () {
               _dialogService.dialogComplete(AlertResponse(response: true));
               Navigator.of(context).pop();
@@ -93,12 +93,11 @@ class _DialogManagerState extends State<DialogManager> {
     }
 
     List<Widget> buttonWidgets = [];
-    for (final DialogButton button in buttons) {
+    for (final CustomDialogButton button in buttons) {
       DarkButtonStyle buttonStyle =
-          button.style != null ? button.style : DarkButtonStyle.Primary;
+      button.style != null ? button.style : DarkButtonStyle.Primary;
       buttonWidgets.add(Container(
-        width: double.infinity,
-        child: DarkButton(
+        child: CustomWidthButton(
           button.text,
           onPressed: () {
             _dialogService
@@ -107,7 +106,9 @@ class _DialogManagerState extends State<DialogManager> {
               Navigator.of(context).pop();
             }
           },
-          style: buttonStyle,
+          buttonWidthProportion: 0.3,
+          fontSize: 30,
+          size: ButtonSize.Medium
         ),
       ));
       buttonWidgets.add(SizedBox(height: 10));

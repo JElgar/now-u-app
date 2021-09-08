@@ -1,12 +1,13 @@
 import 'dart:async';
-import 'package:app/assets/components/darkButton.dart';
+import 'package:app/assets/components/buttons/darkButton.dart';
 
 class AlertRequest {
   final String title;
   final String description;
+  final String headerImage;
   final List buttons;
 
-  AlertRequest({this.title, this.description, this.buttons});
+  AlertRequest({this.title, this.description, this.headerImage, this.buttons});
 }
 
 class AlertResponse {
@@ -14,15 +15,15 @@ class AlertResponse {
   AlertResponse({this.response});
 }
 
-class DialogButton {
+class CustomDialogButton {
   String text;
-  dynamic
-      response; // If the button is clicked what should the dialog service return
+  dynamic response; // If the button is clicked what should the dialog service return
   DarkButtonStyle style;
   //Function onClick; // This might be handy in the future
   bool closeOnClick;
 
-  DialogButton({
+  // Constructor:
+  CustomDialogButton({
     this.text,
     this.response,
     this.style,
@@ -42,11 +43,12 @@ class DialogService {
   Future showDialog({
     String title,
     String description,
+    String headerImage,
     List buttons,
   }) {
     _dialogCompleter = Completer<AlertResponse>();
     _showDialogListener(
-        AlertRequest(title: title, description: description, buttons: buttons));
+        AlertRequest(title: title, description: description, headerImage: headerImage, buttons: buttons));
     return _dialogCompleter.future;
   }
 

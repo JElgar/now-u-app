@@ -5,7 +5,7 @@ import 'package:app/routes.dart';
 import 'package:app/assets/components/campaignTile.dart';
 import 'package:app/pages/other/InfoPage.dart';
 
-import 'package:app/assets/components/darkButton.dart';
+import 'package:app/assets/components/buttons/darkButton.dart';
 import 'package:app/assets/components/customScrollableSheet.dart';
 import 'package:app/assets/components/smoothPageIndicatorEffect.dart';
 import 'package:app/assets/components/textButton.dart';

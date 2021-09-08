@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:android_intent/android_intent.dart';
 
-import 'package:app/assets/components/darkButton.dart';
+import 'package:app/assets/components/buttons/darkButton.dart';
 import 'package:app/assets/components/textButton.dart';
 
 import 'package:app/viewmodels/login_model.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:app/assets/components/darkButton.dart';
+import 'package:app/assets/components/buttons/darkButton.dart';
 import 'package:app/assets/routes/customRoute.dart';
 
 import 'package:app/pages/other/quiz/quizPage.dart';
