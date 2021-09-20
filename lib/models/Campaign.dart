@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 import 'package:app/models/Action.dart';
 import 'package:app/models/Organisation.dart';
@@ -6,10 +7,11 @@ import 'package:app/models/SDG.dart';
 
 import 'package:app/locator.dart';
 import 'package:app/services/dynamicLinks.dart';
+import 'package:app/models/Explorable.dart';
 
 final DynamicLinkService _dynamicLinkService = locator<DynamicLinkService>();
 
-class Campaign {
+class Campaign implements Explorable {
   int id;
   String title;
   String shortName;

@@ -2,6 +2,8 @@ import 'package:app/assets/StyleFrom.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tuple/tuple.dart';
+import 'package:app/models/Explorable.dart';
+import 'package:app/assets/components/selectionItem.dart';
 
 // Custom Icons
 import 'package:app/assets/icons/customIcons.dart';
@@ -210,7 +212,7 @@ Tuple3<String, String, String> generateCampaingActionDesc(
   return Tuple3("Complete", "Completed", "special action");
 }
 
-class CampaignAction {
+class CampaignAction implements Explorable {
   int id;
   String title;
   double time;

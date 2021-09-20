@@ -481,11 +481,6 @@ class ActiveDoneSelector extends StatefulWidget {
 class _ActiveDoneSelectorState extends State<ActiveDoneSelector> {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-        onTap: widget.onClick,
-        child: Padding(
-          padding: EdgeInsets.only(left: 12, bottom: 10),
-          child: SelectionPill(widget.text, widget.selected),
-        ));
+      return SelectionPill(widget.text, widget.selected, onClick: widget.onClick);
   }
 }

@@ -165,7 +165,7 @@ class NewsTile extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        article.getTitle(),
+                        article.getTitle() ?? "",
                         style: textStyleFrom(
                           Theme.of(context).primaryTextTheme.headline3,
                           fontSize: 20,
@@ -177,7 +177,7 @@ class NewsTile extends StatelessWidget {
                       ),
                       SizedBox(height: 5),
                       Text(
-                        article.getSubtitle(),
+                        article.getSubtitle() ?? "",
                         style: textStyleFrom(
                             Theme.of(context).primaryTextTheme.headline5,
                             color: Color.fromRGBO(109, 113, 129, 1)),
