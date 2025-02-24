@@ -111,6 +111,7 @@ class HomeView extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
+
               ExploreSection(
                 title: 'What can I do today?',
                 buildBloc: () => HomeActionSectionBloc(

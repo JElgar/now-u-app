@@ -1,0 +1,3 @@
+[submodule "assets/fonts/now-u-fonts"]
+	path = assets/fonts/now-u-fonts
+	url = git@github.com:now-u/now-u-fonts.git

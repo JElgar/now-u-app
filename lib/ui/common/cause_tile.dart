@@ -86,11 +86,10 @@ class CauseTile extends StatelessWidget {
                       Center(
                         child: Text(
                           '${cause.title}',
-                          style: const TextStyle(
+                          style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                             fontSize: 18.0,
-                            fontWeight: FontWeight.bold,
-                            height: 1,
                           ),
+                          textScaler: const TextScaler.linear(.6),
                           textAlign: TextAlign.center,
                         ),
                       ),
