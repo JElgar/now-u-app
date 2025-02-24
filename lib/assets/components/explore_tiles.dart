@@ -8,6 +8,8 @@ import 'package:nowu/assets/components/cause_indicator.dart';
 import 'package:nowu/assets/components/custom_network_image.dart';
 import 'package:nowu/assets/components/explore_tiles/bloc/explore_learning_resource_tile_bloc.dart';
 import 'package:nowu/assets/components/explore_tiles/bloc/explore_learning_resource_tile_state.dart';
+import 'package:nowu/assets/components/explore_tiles/bloc/explore_news_article_tile_bloc.dart';
+import 'package:nowu/assets/components/explore_tiles/bloc/explore_news_article_tile_state.dart';
 import 'package:nowu/locator.dart';
 import 'package:nowu/models/article.dart';
 import 'package:nowu/router.dart';
@@ -320,67 +322,118 @@ class ExploreNewsArticleTile extends ExploreTile {
         super(key: key);
 
   Widget buildBody(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 0.8,
-      child: InkWell(
-        onTap: () => launchLink(article.link),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            AspectRatio(
-              aspectRatio: 1.8,
-              // TODO ink animation doesn't cover image
-              child: CustomNetworkImage(
-                article.headerImage.url,
-                fit: BoxFit.cover,
-              ),
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8),
+    return BlocProvider(
+      create: (_) => ExploreNewsArticleTileBloc(
+        newsArticle: article,
+        causesService: locator<CausesService>(),
+      ),
+      child:
+          BlocListener<ExploreNewsArticleTileBloc, ExploreNewsArticleTileState>(
+        listener: (context, state) async {
+          if (state is ExploreNewsArticleTileLaunchingState) {
+            await launchUrl(article.link);
+            context.read<ExploreNewsArticleTileBloc>().markLaunched();
+          }
+        },
+        child: BlocBuilder<ExploreNewsArticleTileBloc,
+            ExploreNewsArticleTileState>(
+          builder: (context, state) {
+            return AspectRatio(
+              aspectRatio: 0.8,
+              child: InkWell(
+                onTap: context
+                    .read<ExploreNewsArticleTileBloc>()
+                    .launchNewsArticle,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      article.title,
-                      style: Theme.of(context).textTheme.headlineMedium!,
-                      textScaler: const TextScaler.linear(.7),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
+                    Container(
+                      width: double.infinity,
+                      constraints: const BoxConstraints(maxHeight: 150),
+                      child: AspectRatio(
+                        aspectRatio: 1.8,
+                        // TODO ink animation doesn't cover image
+                        child: Stack(
+                          alignment: Alignment.topRight,
+                          children: [
+                            CustomNetworkImage(
+                              article.headerImage.url,
+                              fit: BoxFit.cover,
+                              width: double.infinity,
+                              height: 150,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: BlocBuilder<UserProgressBloc,
+                                  UserProgressState>(
+                                builder: (context, state) {
+                                  final isComplete =
+                                      state.newsArticleIsCompleted(article.id);
+                                  if (isComplete) {
+                                    return _ExploreTileCheckmark(
+                                      completed: isComplete,
+                                    );
+                                  }
+                                  return Container();
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    Text(
-                      article.subtitle,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodySmall!
-                          .apply(fontStyle: FontStyle.normal),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              article.title,
+                              style:
+                                  Theme.of(context).textTheme.headlineMedium!,
+                              textScaler: const TextScaler.linear(.7),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            Text(
+                              article.subtitle,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall!
+                                  .apply(fontStyle: FontStyle.normal),
+                            ),
+                            Text(
+                              article.publishedAt
+                                  .let(DateFormat('d MMM y').format),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    Text(
-                      article.publishedAt.let(DateFormat('d MMM y').format),
+                    Ink(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      decoration: const BoxDecoration(
+                          color: Color.fromRGBO(247, 248, 252, 1)),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          article.shortUrl,
+                          style: Theme.of(context).textTheme.bodyLarge?.apply(
+                                color: const Color.fromRGBO(255, 136, 0, 1),
+                              ),
+                          textScaler: const TextScaler.linear(.7),
+                        ),
+                      ),
                     ),
                   ],
                 ),
               ),
-            ),
-            Ink(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              decoration:
-                  const BoxDecoration(color: Color.fromRGBO(247, 248, 252, 1)),
-              child: Align(
-                alignment: Alignment.center,
-                child: Text(
-                  article.shortUrl,
-                  style: Theme.of(context).textTheme.bodyLarge?.apply(
-                        color: const Color.fromRGBO(255, 136, 0, 1),
-                      ),
-                  textScaler: const TextScaler.linear(.7),
-                ),
-              ),
-            ),
-          ],
+            );
+          },
         ),
       ),
     );
