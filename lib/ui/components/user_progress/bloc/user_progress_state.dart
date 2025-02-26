@@ -40,6 +40,10 @@ extension UserProgressStateExt on UserProgressState {
     return _getUserInfo()?.completedCampaignIds.contains(campaignId) ?? false;
   }
 
+  bool newsArticleIsCompleted(int articleId) {
+    return _getUserInfo()?.completedNewsArticleIds.contains(articleId) ?? false;
+  }
+
   bool causeIsSelected(int causeId) {
     return _getUserInfo()?.selectedCausesIds.contains(causeId) ?? false;
   }

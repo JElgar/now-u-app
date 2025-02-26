@@ -5,6 +5,7 @@ import 'package:causeApiClient/causeApiClient.dart' as Api;
 import 'package:logging/logging.dart';
 import 'package:nowu/locator.dart';
 import 'package:nowu/models/action.dart';
+import 'package:nowu/models/article.dart';
 import 'package:nowu/models/campaign.dart';
 import 'package:nowu/models/cause.dart';
 import 'package:nowu/models/learning.dart';
@@ -165,6 +166,24 @@ class CausesService {
           .getLearningResourcesApi()
           .learningResourcesComplete(id: learningResource.id),
       _analyticsService.logLearningResourceClicked(learningResource),
+    ).wait;
+
+    // Update user after request
+    await fetchUserInfo();
+  }
+
+  Future completeNewsArticle(NewsArticle newsArticle) async {
+    if (!_authService.isAuthenticated) {
+      _logger.warning(
+        'User is not logged in, skipping news article completion',
+      );
+      return;
+    }
+    await (
+      _causeServiceClient
+          .getNewsArticlesApi()
+          .newsArticleComplete2(id: newsArticle.id),
+      _analyticsService.logNewsArticleClicked(newsArticle),
     ).wait;
 
     // Update user after request
