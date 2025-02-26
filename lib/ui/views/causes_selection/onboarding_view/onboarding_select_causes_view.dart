@@ -61,7 +61,7 @@ class OnboardingSelectCausesView extends StatelessWidget {
                                     'Welcome to now-u',
                                     style: TextStyle(
                                       fontSize: 30,
-                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'PPPangramsBold',
                                       color: Colors.white,
                                     ),
                                   ),

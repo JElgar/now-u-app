@@ -29,7 +29,7 @@ AppBar customAppBar({
       children: <Widget>[
         Expanded(
           child: Align(
-            alignment: Alignment.centerRight,
+            alignment: Alignment.centerLeft,
             child: Container(
               child: TextButton.icon(
                 icon: Icon(
@@ -39,9 +39,6 @@ AppBar customAppBar({
                 ),
                 label: Text(
                   backButtonText ?? 'Back',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w400,
-                  ),
                 ),
                 onPressed: () {
                   context.router.maybePop();

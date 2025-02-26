@@ -60,11 +60,11 @@ class _ProgressTile extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
-              padding: EdgeInsets.fromLTRB(16, 0, 0, 0),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
               child: Text(
                 'My Progress',
-                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
             ),
             const SizedBox(height: 10),
@@ -120,7 +120,6 @@ class ProgressCircle extends StatelessWidget {
           ),
           child: Text(
             progressScore.toString(),
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
           ),
         ),
         const SizedBox(
@@ -128,7 +127,6 @@ class ProgressCircle extends StatelessWidget {
         ),
         Text(
           progressTitle,
-          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
         ),
       ],
     );

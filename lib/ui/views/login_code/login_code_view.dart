@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nowu/assets/components/header.dart';
 import 'package:nowu/locator.dart';
+import 'package:nowu/router.gr.dart';
 import 'package:nowu/services/auth.dart';
 import 'package:nowu/services/user_service.dart';
 import 'package:nowu/themes.dart';
@@ -73,7 +73,7 @@ class LoginCodeView extends StatelessWidget {
                     },
                     child: ListView(
                       children: [
-                        const _LoginForm(),
+                        _LoginForm(email: email),
                       ],
                     ),
                   ),
@@ -88,7 +88,9 @@ class LoginCodeView extends StatelessWidget {
 }
 
 class _LoginForm extends StatelessWidget {
-  const _LoginForm();
+  final String email;
+
+  _LoginForm({required this.email});
 
   String? getErrorText(LoginCode code) {
     switch (code.displayError) {
@@ -112,10 +114,25 @@ class _LoginForm extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            PageHeader(
-              title: 'Complete login',
-              backButton: true,
-              textColor: Colors.white,
+            SafeArea(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TextButton.icon(
+                    onPressed: () =>
+                        context.router.push(LoginEmailSentRoute(email: email)),
+                    label: const Text('Back'),
+                    icon: const Icon(Icons.chevron_left),
+                  ),
+                  Text(
+                    'Login',
+                    style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                          // TODO This should be in the default theme
+                          color: Colors.black,
+                        ),
+                  ),
+                ],
+              ),
             ),
 
             const SizedBox(height: 35),
