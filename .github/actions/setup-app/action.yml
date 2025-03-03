@@ -1,10 +1,18 @@
 name: 'Setup app'
 description: 'Install flutter and dependencies'
 
+inputs:
+  checkout-token:
+    description: 'Token used to checkout app and font repos'
+    required: true
+
 runs:
   using: "composite"
   steps:
     - uses: actions/checkout@v2
+      with:
+        submodules: recursive
+        token: ${{ inputs.checkout-token }}
 
     - name: Install openapi generator
       shell: bash

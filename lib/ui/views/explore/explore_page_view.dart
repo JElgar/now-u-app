@@ -113,8 +113,10 @@ class ExploreTabs extends StatelessWidget {
             bottom: TabBar(
               controller: controller,
               isScrollable: true,
-              labelStyle:
-                  const TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+              labelStyle: const TextStyle(
+                fontSize: 20,
+                fontFamily: 'PPPangramsSemibold',
+              ),
               unselectedLabelColor: Colors.grey,
               unselectedLabelStyle:
                   const TextStyle(fontWeight: FontWeight.w400),

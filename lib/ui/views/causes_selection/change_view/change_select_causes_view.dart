@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nowu/locator.dart';
 import 'package:nowu/services/causes_service.dart';
 import 'package:nowu/ui/components/user_progress/bloc/user_progress_bloc.dart';
@@ -54,29 +53,10 @@ class ChangeSelectCausesView extends StatelessWidget {
                   flex: 1,
                   child: Row(
                     children: [
-                      MaterialButton(
-                        child: Row(
-                          children: [
-                            const Icon(
-                              FontAwesomeIcons.chevronLeft,
-                              color: Colors.orange,
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              S.of(context).actionBack,
-                              style: const TextStyle(
-                                color: Colors.orange,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ],
-                        ),
-                        onPressed: () {
-                          context.router.maybePop();
-                        },
+                      TextButton.icon(
+                        onPressed: () => context.router.maybePop(),
+                        label: const Text('More'),
+                        icon: const Icon(Icons.chevron_left),
                       ),
                       const SizedBox(width: 10),
                     ],
@@ -90,20 +70,12 @@ class ChangeSelectCausesView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
+                        Text(
                           'Edit Causes',
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
+                          style: Theme.of(context).textTheme.headlineMedium,
                         ),
                         Text(
                           S.of(context).changeSelectCausesSelectCausesLabel,
-                          style: const TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                          ),
                         ),
                       ],
                     ),

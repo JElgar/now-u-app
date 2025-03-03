@@ -47,7 +47,7 @@ class CampaignInfoView extends StatelessWidget {
               const Icon(Icons.chevron_left, size: 30),
               Text(
                 'Campaign',
-                style: exploreHeading,
+                style: Theme.of(context).textTheme.headlineSmall,
                 textAlign: TextAlign.left,
               ),
             ],
@@ -80,11 +80,10 @@ class CampaignInfoView extends StatelessWidget {
             campaign?.title ?? 'Loading...',
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              color: CustomColors.white,
-              fontSize: CustomFontSize.heading3,
-              fontWeight: FontWeight.w700,
-            ),
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  color: Colors.white,
+                  fontSize: 28,
+                ),
           ),
         ),
       ],

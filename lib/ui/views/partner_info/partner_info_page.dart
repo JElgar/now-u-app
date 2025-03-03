@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:nowu/assets/components/customTile.dart';
 import 'package:nowu/assets/components/custom_network_image.dart';
-import 'package:nowu/assets/components/header.dart';
 import 'package:nowu/assets/components/sectionTitle.dart';
-import 'package:nowu/assets/constants.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:nowu/models/organisation.dart';
 import 'package:nowu/router.dart';
+import 'package:nowu/router.gr.dart';
 
 final double SECTION_TITLE_BOTTOM_PADDING = 8;
 final double BETWEEN_SECTION_PADDING = 12;
@@ -58,10 +56,21 @@ class PartnerInfoView extends StatelessWidget {
               shrinkWrap: true,
               padding: const EdgeInsets.symmetric(horizontal: 15),
               children: <Widget>[
-                PageHeader(
-                  title: organisation.name,
-                  backButton: true,
-                  padding: 0,
+                SafeArea(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TextButton.icon(
+                        onPressed: () => context.router.push(const MoreRoute()),
+                        label: const Text('More'),
+                        icon: const Icon(Icons.chevron_left),
+                      ),
+                      Text(
+                        organisation.name,
+                        style: Theme.of(context).textTheme.headlineMedium,
+                      ),
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 10),
                 Container(
@@ -182,19 +191,9 @@ class ExtraLinkButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8),
-      child: CustomTile(
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Text(
-            title,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: CustomColors.brandColor,
-                  fontWeight: FontWeight.w800,
-                ),
-            textAlign: TextAlign.center,
-          ),
-        ),
-        onClick: () => launchLinkExternal(context, url),
+      child: ElevatedButton(
+        onPressed: () => launchLinkExternal(context, url),
+        child: new Text(title),
       ),
     );
   }

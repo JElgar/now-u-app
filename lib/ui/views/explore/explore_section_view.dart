@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:nowu/assets/components/card.dart';
 import 'package:nowu/assets/constants.dart';
 import 'package:nowu/router.gr.dart';
+import 'package:nowu/themes.dart';
 import 'package:nowu/ui/paging/paging_state.dart';
 import 'package:nowu/ui/views/explore/explore_page_view.dart';
 
@@ -73,14 +74,14 @@ class ExploreSectionWidget extends StatelessWidget {
                   children: [
                     Text(
                       'Oops.. No items found',
-                      style: lightTheme.textTheme.headlineMedium,
+                      style: regularTheme.textTheme.headlineMedium,
                     ),
                   ],
                 ),
                 const SizedBox(height: CustomPaddingSize.small),
                 Text(
                   'Looks like we don’t have any ‘${title}’ to recommend right now. Check out our ‘Explore’ page to get involved another way.',
-                  style: lightTheme.textTheme.bodyMedium,
+                  style: regularTheme.textTheme.bodyMedium,
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: CustomPaddingSize.small),

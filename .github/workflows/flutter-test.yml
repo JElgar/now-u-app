@@ -21,6 +21,8 @@ jobs:
 
       - name: Setup app
         uses: ./.github/actions/setup-app
+        with:
+          checkout-token: ${{ secrets.CHECKOUT_ACCESS_TOKEN }}
 
       # - run: pod repo update
 
