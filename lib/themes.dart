@@ -2,6 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:nowu/assets/constants.dart';
 import 'package:nowu/ui/common/app_colors.dart';
 
+const Offset tileShadowOffset = Offset(0, 3);
+const double tileShadowBlurRadius = 20;
+final BorderRadius tileBorderRadius = BorderRadius.circular(8);
+const BoxShadow tileBoxShadowLight = BoxShadow(
+  color: Color.fromRGBO(0, 45, 96, 0.08),
+  offset: tileShadowOffset,
+  blurRadius: tileShadowBlurRadius,
+);
+
+const double tileElevation = 10;
+
 // TODO This apply doesn't seem to work
 final baseTextTheme =
     const TextTheme().apply(displayColor: Colors.black, fontFamily: 'Nunito');
@@ -9,61 +20,49 @@ final baseTextTheme =
 final textTheme = baseTextTheme.merge(
   const TextTheme(
     headlineLarge: TextStyle(
-      fontFamily: 'Nunito',
+      fontFamily: 'PPPangramsBold',
       color: Colors.black,
       fontSize: 36,
-      fontWeight: FontWeight.w800,
     ),
     headlineMedium: TextStyle(
-      fontFamily: 'Nunito',
+      fontFamily: 'PPPangramsBold',
       fontSize: 30,
-      fontWeight: FontWeight.w800,
-      // TODO Do we need these?
-      // letterSpacing: 24, // Bold
-      // height: 34,
     ),
     headlineSmall: TextStyle(
-      fontFamily: 'Nunito',
+      fontFamily: 'PPPangramsSemibold',
       color: Colors.black,
       fontSize: 24,
-      fontWeight: FontWeight.w700,
     ),
     displayMedium: TextStyle(
-      fontFamily: 'Nunito',
+      fontFamily: 'PPPangramsMedium',
       color: Colors.black,
       fontSize: 18,
-      fontWeight: FontWeight.w500,
     ),
     bodyLarge: TextStyle(
-      fontFamily: 'Nunito',
+      fontFamily: 'PPPangramsRegular',
       color: Colors.black,
       fontSize: 16,
-      fontWeight: FontWeight.w400,
     ),
     bodySmall: TextStyle(
-      fontFamily: 'Nunito',
+      fontFamily: 'PPPangramsRegular',
       // TODO Check this color is applied (over the baseTextTheme color)
       color: Color.fromRGBO(119, 119, 119, 1),
       fontSize: 16,
-      fontWeight: FontWeight.w400,
       fontStyle: FontStyle.italic,
     ),
     labelLarge: TextStyle(
       // TODO Check this font family is applied (over the baseTextTheme fontFamily)
-      fontFamily: 'Poppins',
+      fontFamily: 'PPPangramsMedium',
       color: Colors.black,
-      fontWeight: FontWeight.w500, // SemiBold
     ),
     labelMedium: TextStyle(
-      fontFamily: 'Nunito',
+      fontFamily: 'PPPangramsRegular',
       fontSize: 14,
-      fontWeight: FontWeight.w400,
       color: Color.fromRGBO(115, 159, 177, 1),
     ),
     labelSmall: TextStyle(
-      fontFamily: 'Nunito',
+      fontFamily: 'PPPangramsSemibold',
       fontSize: 14,
-      fontWeight: FontWeight.w600,
       letterSpacing: 0.5,
     ),
   ),
@@ -72,7 +71,8 @@ final textTheme = baseTextTheme.merge(
 final primaryTextButtonStyle = TextButton.styleFrom(
   backgroundColor: Colors.transparent,
   foregroundColor: CustomColors.brandColor,
-  textStyle: textTheme.displayMedium!.copyWith(fontWeight: FontWeight.w700),
+  textStyle:
+      textTheme.displayMedium!.copyWith(fontFamily: 'PPPangramsSemibold'),
   padding: const EdgeInsets.symmetric(
     vertical: 12.0,
     horizontal: 16.0,
@@ -85,7 +85,8 @@ final primaryTextButtonStyle = TextButton.styleFrom(
 final primaryFilledButtonStyle = TextButton.styleFrom(
   backgroundColor: CustomColors.brandColor,
   foregroundColor: Colors.white,
-  textStyle: textTheme.displayMedium!.copyWith(fontWeight: FontWeight.w700),
+  textStyle:
+      textTheme.displayMedium!.copyWith(fontFamily: 'PPPangramsSemibold'),
   padding: const EdgeInsets.symmetric(
     vertical: 12.0,
     horizontal: 36.0,
@@ -120,7 +121,7 @@ final regularColorScheme = ColorScheme(
 final regularTheme = ThemeData(
   scaffoldBackgroundColor: greyLight1,
   primaryColor: CustomColors.brandColor,
-  fontFamily: fontFamily,
+  fontFamily: 'PPPangramsRegular',
   colorScheme: regularColorScheme,
   textTheme: textTheme,
   buttonTheme: ButtonThemeData(

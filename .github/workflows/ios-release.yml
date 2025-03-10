@@ -58,6 +58,8 @@ jobs:
 
       - name: 🧰  Setup app
         uses: ./.github/actions/setup-app
+        with:
+          checkout-token: ${{ secrets.CHECKOUT_ACCESS_TOKEN }}
 
       # Build and sign the ipa using a single flutter command
       - name: 🛠️ Building IPA

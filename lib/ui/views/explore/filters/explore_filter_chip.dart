@@ -40,7 +40,10 @@ class ExploreFilterChip extends StatelessWidget {
               Theme.of(context).colorScheme.primary.withOpacity(0.23),
           label: Text(
             filterConfig.label,
-            style: const TextStyle(fontSize: 12),
+            style: const TextStyle(
+              fontSize: 12,
+              fontFamily: 'PPPangramsSemibold',
+            ),
           ),
           selected: filterConfig.isSelected(state),
         );
