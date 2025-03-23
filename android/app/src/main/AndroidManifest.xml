@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.nowu.app">
+    >
    <application
         android:label="now-u"
         android:name="${applicationName}"
