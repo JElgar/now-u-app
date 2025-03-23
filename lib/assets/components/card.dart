@@ -1,6 +1,7 @@
-import 'package:nowu/assets/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:nowu/themes.dart';
 
+// TODO Remove and use card
 class BaseCard extends StatelessWidget {
   final Widget child;
 

@@ -43,7 +43,7 @@ class DeleteAccountView extends StatelessWidget {
                         ),
                         const TextSpan(
                           text: 'This action cannot be undone.',
-                          style: TextStyle(fontWeight: FontWeight.w700),
+                          style: TextStyle(fontFamily: 'PPPangramsSemibold'),
                         ),
                       ],
                     ),

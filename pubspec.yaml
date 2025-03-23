@@ -137,40 +137,19 @@ flutter:
   # https://flutter.dev/assets-and-images/#from-packages
 
   fonts:
-    - family: Raleway
+    - family: PPPangramsRegular
       fonts:
-        - asset: assets/fonts/Raleway-Black.ttf
-        - asset: assets/fonts/Raleway-Bold.ttf
-        - asset: assets/fonts/Raleway-ExtraBold.ttf
-        - asset: assets/fonts/Raleway-SemiBold.ttf
-        - asset: assets/fonts/Raleway-Medium.ttf
-        - asset: assets/fonts/Raleway-Regular.ttf
-        - asset: assets/fonts/Raleway-Light.ttf
-          weight: 300
-        - asset: assets/fonts/Raleway-ExtraLight.ttf
-        - asset: assets/fonts/Raleway-Thin.ttf
-    - family: PeaceSans
+        - asset: assets/fonts/now-u-fonts/PPPangramSansRounded-Regular/PPPangramSansRounded-Regular.ttf
+    - family: PPPangramsMedium
       fonts:
-        - asset: assets/fonts/peace_sans.otf
-    - family: Nunito
+        - asset: assets/fonts/now-u-fonts/PPPangramSansRounded-Medium/PPPangramSansRounded-Medium.ttf
+    - family: PPPangramsSemibold
       fonts:
-        - asset: assets/fonts/Nunito/Nunito-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/Nunito/Nunito-SemiBold.ttf
-          weight: 500
-        - asset: assets/fonts/Nunito/Nunito-Bold.ttf
-          weight: 600
-        - asset: assets/fonts/Nunito/Nunito-Black.ttf
-          weight: 800
-    - family: Poppins
+        - asset: assets/fonts/now-u-fonts/PPPangramSansRounded-Semibold/PPPangramSansRounded-Semibold.ttf
+    - family: PPPangramsBold
       fonts:
-        - asset: assets/fonts/Poppins/Poppins-SemiBold.ttf
-          weight: 500
-    - family: SourceSans
-      fonts:
-        - asset: assets/fonts/SourceSansPro/SourceSansPro-Italic.ttf
-          weight: 400
-          style: italic
+        - asset: assets/fonts/now-u-fonts/PPPangramSansRounded-Bold/PPPangramSansRounded-Bold.ttf
+          weight: 700
     - family: CustomIcons
       fonts:
         - asset: assets/fonts/Icons/CustomIcons.ttf

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:nowu/assets/components/customScrollableSheet.dart';
-import 'package:nowu/assets/components/header.dart';
 import 'package:nowu/assets/components/customTile.dart';
 import 'package:nowu/locator.dart';
 import 'package:nowu/models/faq.dart';
+import 'package:nowu/router.gr.dart';
 import 'package:nowu/services/faq_service.dart';
 import 'package:nowu/ui/views/faq/bloc/faq_bloc.dart';
 import 'package:nowu/ui/views/faq/bloc/faq_state.dart';
@@ -32,19 +32,31 @@ class FaqView extends StatelessWidget {
           sheetBackgroundColor: Colors.white,
           header: Container(
             height: MediaQuery.of(context).size.height * (1 - 0.6),
+            width: double.infinity,
             child: Stack(
               children: [
-                Positioned(
-                  right: -30,
-                  bottom: MediaQuery.of(context).size.height * (1 - 0.6) * 0.3,
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
                   child: Image.asset(
                     'assets/imgs/graphics/ilstr_FAQ.png',
                     height: MediaQuery.of(context).size.height * 0.3,
+                    alignment: Alignment.topRight,
                   ),
                 ),
-                PageHeader(
-                  backButton: true,
-                  title: 'FAQs',
+                SafeArea(
+                  child: Column(
+                    children: [
+                      TextButton.icon(
+                        onPressed: () => context.router.push(const MoreRoute()),
+                        label: const Text('More'),
+                        icon: const Icon(Icons.chevron_left),
+                      ),
+                      Text(
+                        'FAQs',
+                        style: Theme.of(context).textTheme.headlineMedium,
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

@@ -366,11 +366,10 @@ class ExploreNewsArticleTile extends ExploreTile {
                               child: BlocBuilder<UserProgressBloc,
                                   UserProgressState>(
                                 builder: (context, state) {
-                                  final isComplete =
-                                      state.newsArticleIsCompleted(article.id);
-                                  if (isComplete) {
-                                    return _ExploreTileCheckmark(
-                                      completed: isComplete,
+                                  if (state
+                                      .newsArticleIsCompleted(article.id)) {
+                                    return const _ExploreTileCheckmark(
+                                      completed: true,
                                     );
                                   }
                                   return Container();
@@ -415,15 +414,15 @@ class ExploreNewsArticleTile extends ExploreTile {
                     ),
                     Ink(
                       padding: const EdgeInsets.symmetric(vertical: 8),
-                      decoration: const BoxDecoration(
-                        color: Color.fromRGBO(247, 248, 252, 1),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).scaffoldBackgroundColor,
                       ),
                       child: Align(
                         alignment: Alignment.center,
                         child: Text(
                           article.shortUrl,
                           style: Theme.of(context).textTheme.bodyLarge?.apply(
-                                color: const Color.fromRGBO(255, 136, 0, 1),
+                                color: Theme.of(context).primaryColor,
                               ),
                           textScaler: const TextScaler.linear(.7),
                         ),

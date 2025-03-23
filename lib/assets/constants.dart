@@ -84,10 +84,6 @@ class CustomColors {
 //-- Shadow colors --//
 }
 
-//-- Fonts --//
-String fontFamily = 'Nunito';
-String fontFamilySecondary = 'Poppins';
-
 class CustomFontSize {
   static double heading1 = 36;
   static double heading2 = 30;
@@ -103,47 +99,3 @@ class CustomPaddingSize {
   static const double normal = 20;
   static const double large = 40;
 }
-
-TextStyle exploreHeading = TextStyle(
-  color: CustomColors.black1,
-  fontSize: CustomFontSize.heading2,
-  fontWeight: FontWeight.w400, // Regular
-  fontStyle: FontStyle.normal,
-);
-
-const Offset tileShadowOffset = Offset(0, 3);
-const double tileShadowBlurRadius = 20;
-final BorderRadius tileBorderRadius = BorderRadius.circular(8);
-const BoxShadow tileBoxShadowLight = BoxShadow(
-  color: Color.fromRGBO(0, 45, 96, 0.08),
-  offset: tileShadowOffset,
-  blurRadius: tileShadowBlurRadius,
-);
-const BoxShadow tileBoxShadowDark = BoxShadow(
-  color: Color.fromRGBO(0, 0, 0, 0.08),
-  offset: tileShadowOffset,
-  blurRadius: tileShadowBlurRadius,
-);
-
-const double tileElevation = 10;
-
-//-- Themes --//
-
-final ligthThemeBaseTextStyle = TextStyle(
-  color: CustomColors.black1,
-);
-
-// Used through majority of app
-final lightTheme = ThemeData(
-  fontFamily: 'Nunito',
-  textTheme: TextTheme(
-    bodyMedium: ligthThemeBaseTextStyle.copyWith(
-      fontSize: 16,
-      fontWeight: FontWeight.w400,
-    ),
-    headlineMedium: ligthThemeBaseTextStyle.copyWith(
-      fontSize: 20,
-      fontWeight: FontWeight.w700,
-    ),
-  ),
-);
